@@ -1,0 +1,10 @@
+resource "aws_s3_bucket" "app" {
+  bucket = var.bucket_name
+}
+
+resource "aws_s3_bucket_public_access_block" "public" {
+  bucket = aws_s3_bucket.app.id
+
+  block_public_acls   = false
+  block_public_policy = false
+}
