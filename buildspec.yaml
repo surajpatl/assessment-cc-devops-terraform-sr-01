@@ -3,12 +3,11 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 15
     commands:
       - echo "Node version:"
       - node -v
       - echo "Installing dependencies"
-      - npm config set engine-strict false
       - npm install
 
   build:
