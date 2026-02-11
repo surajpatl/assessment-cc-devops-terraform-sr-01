@@ -14,8 +14,8 @@ phases:
     commands:
       - echo "Running lint"
       - npm run lint
-      - echo "Running formatter"
-      - npm run prettier
+      - echo "Fixing formatting"
+      - npx prettier --write ./src/
       - echo "Running tests"
       - npm run test
       - echo "Building project"
