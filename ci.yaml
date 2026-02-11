@@ -1,37 +1,24 @@
-name: CI Pipeline
-#test
-on: 
-  pull_request:
-    branches:
-      - devel
-      - stage 
+version: 0.2
 
-jobs:
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing dependencies...
+      - npm install
+
   build:
-    runs-on: ubuntu-latest
+    commands:
+      - echo Running linter...
+      - npm run lint
+      - echo Running formatter...
+      - npm run prettier
+      - echo Running tests...
+      - npm run test
+      - echo Building project...
+      - npm run build
 
-    steps: 
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '15'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run linter
-        run: npm run lint
-
-      - name: Run formatter
-        run: npm run prettier
-
-      - name: Run tests
-        env: 
-          CI: true
-        run: npm run test
-
-      - name: Build project
-        run: npm run build
+artifacts:
+  files:
+    - '**/*'
