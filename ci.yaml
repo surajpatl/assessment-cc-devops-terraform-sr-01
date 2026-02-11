@@ -5,18 +5,16 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
+      - echo Node version:
+      - node -v
       - echo Installing dependencies...
-      - npm install
+      - npm ci
 
   build:
     commands:
-      - echo Running linter...
       - npm run lint
-      - echo Running formatter...
       - npm run prettier
-      - echo Running tests...
       - npm run test
-      - echo Building project...
       - npm run build
 
 artifacts:
