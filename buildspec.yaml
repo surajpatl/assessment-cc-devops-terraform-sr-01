@@ -14,10 +14,13 @@ phases:
     commands:
       - echo "Running lint"
       - npm run lint
+
       - echo "Fixing formatting"
       - npx prettier --write ./src/
+
       - echo "Running tests"
-      - npm run test
+      - CI=true npm run test -- --watchAll=false
+
       - echo "Building project"
       - npm run build
 
